@@ -1,0 +1,451 @@
+/*============== Color Mode Vars ============*/
+:root{
+
+    /*Black and White*/
+    --color-white: #fff;
+    --color-black: #000;
+
+    /*Dark Mode*/
+    --dm-bg: #1d1d1d;
+    --dm-bg-card: #313131;
+
+    /*Light Mode*/
+    --lm-bg: #f1f1f1;
+    --lm-bg-card: #ffffff;
+
+    /*High Contrast*/
+    --hc-clr1: #FFFF00;
+    --hc-clr1-hov: #e8d50b;
+    --hc-clr2: #00F7FF;
+    --hc-common: #2FFF00;
+    --hc-rare: #00F7FF;
+    --hc-unique: #FFDD00;
+    --hc-mythic: #FFBCE8;
+
+    /* Color Blind Due Pro*/
+    --cbdp-clr1: #2754d1;
+    --cbdp-clr1-hov: #2247ae;
+    --cbdp-clr2: #daad29;
+    --cbdp-common: #edff66;
+    --cbdp-rare: #4e89db;
+    --cbdp-unique: #eeba10;
+    --cbdp-mythic: #2636cd;
+
+    /* Color Blind Tri*/
+    --cbt-clr1: #bb1345;
+    --cbt-clr1-hov: #901137;
+    --cbt-clr2: #21bfc5;
+    --cbt-common: #5bffe1;
+    --cbt-rare: #ed4da5;
+    --cbt-unique: #3b7ad2;
+    --cbt-mythic: #be1553; 
+}
+/*===========================================*/
+
+/*------------ Black and White -----------*/
+.black-and-white-mode{
+    filter: grayscale(1) !important;
+}
+/*----------------------------------------*/
+
+/*------------ Dark Mode ------ -----------*/
+.dark-mode .modal{
+    background-color: var(--dm-bg);
+}
+.dark-mode .item-card{
+    background-color: var(--dm-bg-card);
+}
+.dark-mode p, .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode label, .dark-mode .img-cost, .dark-mode .item-card i{
+    color: var(--color-white) !important;
+}
+/*-----------------------------------------*/
+
+/*------------ Light Mode ------ -----------*/
+.light-mode .modal{
+    background-color: var(--lm-bg);
+    background-image: none;
+}
+.light-mode .item-card{
+    background-color: var(--lm-bg-card);
+}
+.light-mode p, .light-mode h1, .light-mode h2, .light-mode h3, .light-mode h4, .light-mode label, .light-mode .img-cost, .light-mode .item-card{
+    color: var(--color-black) !important;
+}
+.light-mode .logo-main{
+    color: var(--color-white) !important;
+}
+/*-----------------------------------------*/
+
+/*------------ Custom UI Colors -----------*/
+.ui-custom-colors:hover{
+    filter: brightness(90%) !important;
+}
+/*-----------------------------------------*/
+
+/*------------ Targeting Boxes -----------*/
+.target-boxes #player{
+    border: 3px dashed #1ae65e !important;
+}
+.target-boxes .obj{
+    border: 3px dashed #da0e0e !important;
+}
+
+.high-contrast-mode.target-boxes #player{
+    border: 3px dashed #00ff15 !important;
+}
+.high-contrast-mode.target-boxes .obj{
+    border: 3px dashed #00F7FF !important;
+}
+
+.color-blind-deu-pro.target-boxes #player{
+    border: 3px dashed #00F7FF !important;
+}
+.color-blind-deu-pro.target-boxes .obj{
+    border: 3px dashed #ffea00 !important;
+}
+
+.color-blind-tri.target-boxes #player{
+    border: 3px dashed #ffea00 !important;/*yellow because of hue rotate on player - turns to cyan*/
+}
+.color-blind-tri.target-boxes .obj{
+    border: 3px dashed #00e5ff !important; /*blue because of hue rotate on objs - turns to pink*/
+}
+/*-----------------------------------------*/
+
+/*------------ Cursors -----------*/
+.disable-cursors body{
+    cursor: default !important;
+}
+.disable-cursors .obj:hover{
+    cursor: pointer;
+}
+/*--------------------------------*/
+
+/*------------ High Contrast Mode -----------*/
+.high-contrast-mode .logo-main{
+    background-color: var(--color-black) !important;
+}
+.high-contrast-mode p, .high-contrast-mode h1, .high-contrast-mode h2, .high-contrast-mode h3, .high-contrast-mode h4{
+    color: var(--color-white) !important;
+}
+.high-contrast-mode .divider, .high-contrast-mode .settingsSubContainer{
+    border: 3px dashed var(--hc-clr1) !important;
+}
+.high-contrast-mode footer, .high-contrast-mode nav{
+    --color-black-transparent: rgba(0, 0, 0, 0.7);
+}
+.high-contrast-mode .modal{
+    background-color: var(--color-black) !important;
+    color: var(--color-white) !important;
+}
+.high-contrast-mode .item-card{
+    background-color: #191919 !important;
+    color: var(--color-white) !important;
+}
+.high-contrast-mode .obj .clicker-num{
+    color: var(--color-black) !important;
+}
+.high-contrast-mode .obj:hover .clicker-num{
+    color: var(--color-black) !important;
+    background-color: var(--color-white) !important;
+    display: block !important;
+    width: auto !important;
+    padding: 0 !important;
+
+}
+.high-contrast-mode .btn{
+    background-color: var(--hc-clr1) !important;
+    color: var(--color-black) !important;
+    border: 3px solid var(--color-black) !important;
+}
+    .high-contrast-mode .btn:hover{
+        background-color: var(--hc-clr1-hov) !important;
+    }
+.high-contrast-mode #health::-webkit-progress-bar {
+    background-color: var(--color-black) !important;
+    border: 2px solid var(--color-black) !important;
+}
+.high-contrast-mode #health::-webkit-progress-value {
+    background-color: var(--hc-clr2) !important;
+}
+
+/*inputs*/
+.high-contrast-mode #score, .high-contrast-mode #lvl, .high-contrast-mode #lvlLabel{
+    background-color: var(--color-black) !important;
+}
+.high-contrast-mode input[type='checkbox'] {
+    background-color: var(--hc-clr1) !important;
+    accent-color: var(--color-black) !important;
+}
+.high-contrast-mode input[type='checkbox']:checked {
+    background-color: var(--color-black) !important;
+    accent-color: var(--hc-clr1) !important;
+}
+.high-contrast-mode input[type='range'] {
+    background-color: var(--color-white) !important;
+    accent-color: var(--hc-clr1) !important;
+}
+.high-contrast-mode input[type='checkbox']:hover {
+    background-color: var(--hc-clr1-hov) !important;
+}
+.high-contrast-mode input[type='checkbox']:checked:hover {
+    accent-color: var(--hc-clr1-hov) !important;
+}
+.high-contrast-mode input[type='range']:hover {
+    accent-color: var(--hc-clr1-hov) !important;
+}
+
+.high-contrast-mode ::-webkit-scrollbar-thumb {
+    background: var(--hc-clr1) !important; 
+    border-radius: 10px !important;
+  }
+.high-contrast-mode .item-card .owned-tag, .high-contrast-mode .item-card .equipped-tag{
+    color: var(--color-black)  !important;
+    background-color:var(--hc-clr2)  !important;
+}
+.high-contrast-mode .item-card.buyable:hover>.buy-tag{
+    color: var(--color-black)  !important;
+    background-color: var(--hc-clr1)  !important;
+}
+/*rarities*/
+.high-contrast-mode .common{
+    border: 7px solid var(--hc-common) !important;
+}
+.high-contrast-mode .rare{
+    border: 7px solid var(--hc-rare)  !important;
+}
+.high-contrast-mode .unique{
+    border: 7px solid var(--hc-unique) !important;
+}
+.high-contrast-mode .mythic{
+    border: 7px solid var(--hc-mythic) !important;
+}
+/*------------ ----------------- -----------*/
+
+
+
+
+
+
+
+/*------------ Color Blind Mode 1 - DEU - PRO-----------*/
+.color-blind-deu-pro .color-blindness-filter{
+    position: absolute;
+    top: 0;
+    bottom:0;
+    right: 0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 255, .08), rgba(0,0,255,.08)); /*adds blue filter to bg*/
+    z-index: 400;
+}
+.color-blind-deu-pro #player, .color-blind-deu-pro .obj,
+.color-blind-deu-pro #ship-container .item-img, .color-blind-deu-pro #galaxy-container .item-img,
+.color-blind-deu-pro #myships-container .item-img, .color-blind-deu-pro #mygalaxies-container .item-img{
+    filter:sepia(65%) saturate(1.50); /*adds yellow filter to objs and player*/
+}
+.color-blind-deu-pro #mycursors-container .item-img, .color-blind-deu-pro #cursor-container .item-img{
+    filter: hue-rotate(215deg);
+}
+
+.color-blind-deu-pro .logo-main{
+    color: var(--color-white);
+}
+
+.color-blind-deu-pro .logo-main:hover{
+    color: var(--color-white);
+    text-decoration: underline;
+}
+.color-blind-deu-pro .btn{
+    background-color: var(--cbdp-clr1) !important;
+    color: var(--color-white) !important;
+}
+.color-blind-deu-pro .btn .btn-icon-nobg{
+    background-color: transparent !important;
+    color: var(--color-white) !important;
+}
+    .color-blind-deu-pro .btn:hover{
+        background-color: var(--cbdp-clr1-hov) !important;
+    }
+.color-blind-deu-pro #health::-webkit-progress-bar {
+    background-color: var(--color-black) !important;
+    border: 2px solid var(--color-white) !important;
+}
+.color-blind-deu-pro #health::-webkit-progress-value {
+    background-color: #2faedc !important;/*fallback*/
+    background: linear-gradient(
+        90deg,
+        rgb(33, 75, 164) 0%,
+        rgb(47, 174, 220) 25%,
+        rgb(138, 237, 255) 50%,
+        rgb(47, 174, 220) 75%,
+        rgb(33, 75, 164) 100%
+      ) !important;
+}
+
+/*inputs*/
+.color-blind-deu-pro input[type='checkbox'] {
+    background-color: var(--cbdp-clr1) !important;
+    accent-color: var(--color-white) !important;
+}
+.color-blind-deu-pro input[type='checkbox']:checked {
+    background-color: var(--color-white) !important;
+    accent-color: var(--cbdp-clr1) !important;
+}
+.color-blind-deu-pro input[type='range'] {
+    background-color: var(--color-white) !important;
+    accent-color: var(--cbdp-clr1) !important;
+}
+.color-blind-deu-pro input[type='checkbox']:hover {
+    background-color: var(--cbdp-clr1-hov) !important;
+}
+.color-blind-deu-pro input[type='checkbox']:checked:hover {
+    accent-color: var(--cbdp-clr1-hov) !important;
+}
+.color-blind-deu-pro input[type='range']:hover {
+    accent-color: var(--cbdp-clr1-hov) !important;
+}
+.color-blind-deu-pro .item-card .owned-tag, .color-blind-deu-pro .item-card .equipped-tag{
+    color: var(--color-black)  !important;
+    background-color: var(--cbdp-clr2)  !important;
+}
+.color-blind-deu-pro .item-card.buyable:hover>.buy-tag{
+    color: var(--color-white)  !important;
+    background-color: var(--cbdp-clr1)  !important;
+}
+/*rarities*/
+.color-blind-deu-pro .common{
+    border: 7px solid var(--cbdp-common) !important;
+}
+.color-blind-deu-pro .rare{
+    border: 7px solid var(--cbdp-rare)  !important;
+}
+.color-blind-deu-pro .unique{
+    border: 7px solid var(--cbdp-unique) !important;
+}
+.color-blind-deu-pro .mythic{
+    border: 7px solid var(--cbdp-mythic) !important;
+}
+
+/*cursors for color blind mode due pro*/
+.default{cursor: default 0 0, auto;}
+.color-blind-deu-pro .dot{cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto !important;}
+.color-blind-deu-pro .dot2{cursor: url('../assets/imgs/cursors/Cursor-DotLines.png') 25 25, auto !important;}
+.color-blind-deu-pro .target{cursor: url('../assets/imgs/cursors/Cursor-Target.png') 25 25, auto !important;}
+.color-blind-deu-pro .target2{cursor: url('../assets/imgs/cursors/Cursor-AdvancedTarget.png') 25 25, auto !important;}
+.color-blind-deu-pro .target3{cursor: url('../assets/imgs/cursors/Cursor-SuperiorTarget.png') 25 25, auto !important;}
+.color-blind-deu-pro .arrow{cursor: url('../assets/imgs/cursors/Cursor-Arrow.png') 25 25, auto !important;}
+.color-blind-deu-pro .cross{cursor: url('../assets/imgs/cursors/Cursor-Cross.png') 25 25, auto !important;}
+.color-blind-deu-pro .flower{cursor: url('../assets/imgs/cursors/Cursor-Flower.png') 25 25, auto !important;}
+.color-blind-deu-pro .skull{cursor: url('../assets/imgs/cursors/Cursor-Skull.png') 25 25, auto !important;}
+.color-blind-deu-pro .smile{cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto !important;}
+.color-blind-deu-pro .star{cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto !important;}
+.color-blind-deu-pro .money{cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto !important;}
+.color-blind-deu-pro .boom{cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto !important;}
+.color-blind-deu-pro .aster{cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto !important;}
+.color-blind-deu-pro .rocket{cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto !important;}
+.color-blind-deu-pro .blackhole{cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto !important;}
+.color-blind-deu-pro .gal{cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto !important;}
+
+/*------------ ----------------- -----------*/
+
+
+
+/*------------ Color Blind Mode 2 - TRI -----------*/
+.color-blind-tri .color-blindness-filter{
+    position: absolute;
+    top: 0;
+    bottom:0;
+    right: 0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 145, 255, 0.08), rgba(0,145,255,.08)); /*adds blue filter to bg*/
+    z-index: 400;
+}
+.color-blind-tri #player, .color-blind-tri .obj,
+.color-blind-tri #ship-container .item-img, .color-blind-tri #galaxy-container .item-img,
+.color-blind-tri #myships-container .item-img, .color-blind-tri #mygalaxies-container .item-img{
+    filter:sepia(30%) hue-rotate(145deg); /*adds cyan filter to objs and player*/
+}
+
+.color-blind-tri .logo-main{
+    color: var(--color-white);
+}
+.color-blind-tri .logo-main:hover{
+    color: var(--color-white);
+    text-decoration: underline;
+}
+.color-blind-tri .btn{
+    background-color: var(--cbt-clr1) !important;
+    color: var(--color-white) !important;
+}
+.color-blind-tri .btn .btn-icon-nobg{
+    background-color: transparent !important;
+    color: var(--color-white) !important;
+}
+    .color-blind-tri .btn:hover{
+        background-color: var(--cbt-clr1-hov) !important;
+    }
+.color-blind-tri #health::-webkit-progress-bar {
+    background-color: var(--color-black) !important;
+    border: 2px solid var(--color-white) !important;
+}
+.color-blind-tri #health::-webkit-progress-value {
+    background-color: var(--color-health);/*fallback*/
+    background: linear-gradient(
+        90deg,
+        rgb(116, 9, 50) 0%,
+        rgb(205, 10, 82) 25%,
+        rgb(224, 19, 142) 50%,
+        rgb(205, 10, 82) 75%,
+        rgb(116, 9, 50) 100%
+      ) !important;
+}
+
+/*inputs*/
+.color-blind-tri input[type='checkbox'] {
+    background-color: var(--cbt-clr1) !important;
+    accent-color: var(--color-white) !important;
+}
+.color-blind-tri input[type='checkbox']:checked {
+    background-color: var(--color-white) !important;
+    accent-color: var(--cbt-clr1) !important;
+}
+.color-blind-tri input[type='range'] {
+    background-color: var(--color-white) !important;
+    accent-color: var(--cbt-clr1) !important;
+}
+.color-blind-tri input[type='checkbox']:hover {
+    background-color: var(--cbt-clr1-hov) !important;
+}
+.color-blind-tri input[type='checkbox']:checked:hover {
+    accent-color: var(--cbt-clr1-hov) !important;
+}
+.color-blind-tri input[type='range']:hover {
+    accent-color: var(--cbt-clr1-hov) !important;
+}
+.color-blind-tri .item-card .owned-tag, .color-blind-tri .item-card .equipped-tag{
+    color: var(--color-black)  !important;
+    background-color: var(--cbt-clr2)  !important;
+}
+.color-blind-tri .item-card.buyable:hover>.buy-tag{
+    color: var(--color-white)  !important;
+    background-color: var(--cbt-clr1)  !important;
+}
+/*rarities*/
+.color-blind-tri .common{
+    border: 7px solid var(--cbt-common) !important;
+}
+.color-blind-tri .rare{
+    border: 7px solid var(--cbt-rare)  !important;
+}
+.color-blind-tri .unique{
+    border: 7px solid var(--cbt-unique) !important;
+}
+.color-blind-tri .mythic{
+    border: 7px solid var(--cbt-mythic) !important;
+}
+
+/*------------ ----------------- -----------*/

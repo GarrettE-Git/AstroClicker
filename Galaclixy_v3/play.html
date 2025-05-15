@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html class="default G1">
+
+<head>
+    <title>Gala-Clixy | The Galactic Clicker Game</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="A Galactic Clicker Game">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Galaclixy_v3/styles/bootstrapGrid-min.css">
+    <link rel="stylesheet" href="../Galaclixy_v3/styles/main-styles.css">
+    <link rel="stylesheet" href="../Galaclixy_v3/styles/Galaclixy-styles.css">
+    <link rel="stylesheet" href="../Galaclixy_v3/styles/settings-override-styles.css">
+    <script src="../Galaclixy_v3/scripts/navbar.js" defer></script>
+    <script src="../Galaclixy_v3/scripts/galaclixy-settings.js" defer></script>
+    <script src="../Galaclixy_v3/scripts/galaclixy-animationManager.js" defer></script>
+    <script src="../Galaclixy_v3/scripts/galaclixy-itemDB.js" defer></script>
+    <script src="../Galaclixy_v3/scripts/galaclixy-main.js" defer></script>
+    <script src="../Galaclixy_v3/scripts/galaclixy-itemManager.js" defer></script>
+    <script src="../Galaclixy_v3/scripts/galaclixy-collisionManager.js" defer></script>
+    <script src="../Galaclixy_v3/scripts/galaclixy-equipmentManager.js" defer></script>
+    <script src="../Galaclixy_v3/scripts/galaclixy-playerProfile.js" defer></script>
+
+
+    <!--Google Libraries-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Orbitron:wght@400..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!--========================== NAV =================================-->
+    <nav id="nav"
+        class="row justify-content-between justify-content-sm-center justify-content-md-between align-items-center px-0 mx-0">
+        <a href="./index.html" class="txt-left txt-center-sm txt-left-md col-7 col-sm-12 col-md-3 col-lg-2 my-1">
+            <h1 class="txt-h3 logo-main" style="display:block; font-size: 1.4rem;">GALACLIXY</h1>
+        </a>
+        <a href="#mainContent" class="sr-only">Skip to main content</a>
+        <!--Mobil Nav Btn-->
+        <div class="col-4 txt-right nav-ham-menu" style="display:none;">
+            <button id="btnHam" class="nav-ham-btn btn-3d" onclick="toggleNavHam()">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+        <ul id="navLinks" class="txt-center txt-right-md col-12 col-md-9 col-lg-10 my-0 nav-mobile">
+            <li><button class="btn btn-primary btn-icon" onclick="toggleMyStuff()" aria-label="My Stuff"><span
+                        class="material-symbols-outlined" aria-hidden="true">personal_bag</span></button></li>
+            <li><button class="btn btn-primary btn-icon" onclick="toggleStore()" aria-label="Intergalactic Shop"><span
+                        class="material-symbols-outlined" aria-hidden="true">storefront</span></button></li>
+            <!--<li><button class="btn btn-primary btn-icon" onclick="toggleProfile()" aria-label="My Profile"><span
+                        class="material-symbols-outlined" aria-hidden="true">person</span></button></li>-->
+        </ul>
+    </nav>
+
+    <!--========================== START MAIN CONTENT =================================-->
+    <main id="mainContent">
+        <!--Travel Animation Screen-->
+        <div id="TravelBox" aria-hidden="true"><img src="../Galaclixy_v3/assets/imgs/BGs/TravelPortal.gif" alt="" />
+        </div>
+
+        <!--Player Viewport-->
+        <section id="playVP">
+            <div class="color-blindness-filter"></div>
+            <img id="player" src="../Galaclixy_v3/assets/imgs/ships/Ship-RustBucket.png" alt="" />
+            <button class="btn btn-3d btn-start mt-5" style="z-index: 650; margin-bottom: -100px;" id="btnStartGame"
+                onclick="startGame()">Blast Off!</button>
+
+            <!--Blast Off Planet BG-->
+            <div style="width: 100dvw; height: auto;">
+                <div id="homePlanet"><!--Leave Empty--></div>
+            </div>
+
+            <div id="objsBG"><!--Leave Empty--></div>
+
+            <!-- Alerts Popup -->
+            <div id="alert-modal" class="alert-modal row align-items-center justify-content-center">
+                <div>
+                    <p class="txt-h4 my-2 color-error txt-center" id="alert-msg" style="display:block;">You do not have
+                        enough galaxy tokens!</p>
+                    <div class="txt-center">
+                        <p id="alert-desc" style="display:block;">Reload from Last Save</p>
+                    </div>
+                    <div class="txt-center my-2">
+                        <button onclick="toggleAlerts()" id="btnAlertsClose" class="btn btn-3d btn-primary">Okay</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--My Stuff Pop Up Menu-->
+            <div id="mystuff-menu" class="modal">
+                <button onclick="toggleMyStuff()" class="btn btn-3d btn-close"><span
+                    class="material-symbols-outlined">close</span></button>
+
+                <h2 class="txt-center txt-h2 mb-4 color-main" style="display:block;">My Stuff</h2>
+
+                <!--My Ships-->
+                <h3 class="txt-h3 m-4">Ships</h3>
+                <p class="mx-4">Fly through the stars in style.</p>
+                <div class="row align-items-stretch justify-content-center m-0 mt-4" id="myships-container">
+
+                </div>
+
+                <!--My Cursors-->
+                <h3 class="txt-h3 m-4">Cursors</h3>
+                <p class="mx-4">Higher level cursors earn you more points per click.</p>
+                <div class="row align-items-stretch justify-content-center m-0 mt-4" id="mycursors-container">
+
+                </div>
+
+                <!--My Galaxies-->
+                <h3 class="txt-h3 m-4">Galaxies</h3>
+                <p class="mx-4">Planets and asteroids get stronger as you explore new galaxies, making it more
+                    challenging, but easier to earn Galactic Coins. <strong>It is recommended to save and reload the
+                        page before traveling to new galaxies.</strong></p>
+                <div class="row align-items-stretch justify-content-center m-0 mt-4" id="mygalaxies-container">
+
+                </div>
+            </div>
+
+            <!--My Profile Pop Up Menu-->
+            <div id="profile-menu" class="modal">
+                <button onclick="toggleProfile()" class="btn btn-3d btn-close"><span
+                    class="material-symbols-outlined">close</span></button>
+                <h2 class="txt-center txt-h2 mb-4 color-main" style="display:block;">Profile</h2>
+                <div class="row align-items-stretch justify-content-center m-0" id="travel-container">
+
+                </div>
+            </div>
+
+            <!--Store Pop Up Menu-->
+            <div id="store-menu" class="modal">
+                <button onclick="toggleStore()" class="btn btn-3d btn-close"><span
+                    class="material-symbols-outlined">close</span></button>
+
+                <h2 class="txt-center txt-h2 mb-4 color-main" style="display:block;">Store</h2>
+                <p class="txt-center" style="text-wrap: balance;">Welcome to the Intergalactic Shop! Here you can spend
+                    your galaxy tokens to buy new ships, cursors, upgrades, and warps to new galaxies. To equip your
+                    purchased items, go to "My Stuff." To use the warps to new galaxies, go to "Travel."</p>
+                <div class="divider"></div>
+
+                <!---Ships-->
+                <h3 class="txt-h3 m-4">Ships</h3>
+                <div class="row align-items-stretch justify-content-center m-0" id="ship-container">
+
+                </div>
+
+                <!---Cursors-->
+                <h3 class="txt-h3 m-4">Cursors</h3>
+                <div class="row align-items-stretch justify-content-center m-0" id="cursor-container">
+
+                </div>
+
+                <!---Galaxies-->
+                <h3 class="txt-h3 m-4">Galaxies</h3>
+                <div class="row align-items-stretch justify-content-center m-0" id="galaxy-container">
+
+                </div>
+
+            </div><!---End Store Menu--->
+
+            <!--Death Pop Up Menu-->
+            <div id="death-modal" class="modal">
+                <button onclick="reloadFromDeath()" class="btn btn-3d btn-close"><span
+                        class="material-symbols-outlined">close</span></button>
+                <h2 class="txt-h2 mb-4 color-error txt-center" style="display:block;">You Died!</h2>
+                <div class="txt-center">
+                    <i style="text-wrap: balance;">Blast space debris in your path to avoid taking damage.</i>
+                    <i style="text-wrap: balance;">Still having a hard time? Try upgrading your gear from the shop or
+                        adjusting the difficulty settings.</i>
+                    <p class="txt-h4 mt-4" style="display:block;">Reload from Last Save</p>
+                </div>
+                <div class="txt-center my-4"><button onclick="reloadFromDeath()" class="btn btn-primary">Reload</button>
+                </div>
+            </div>
+
+            <!--Message Pop Up-->
+            <div id="message-modal" class="modal">
+
+            </div>
+
+            <!--Settings Pop Up Menu-->
+            <div id="settings-menu" class="modal">
+                <button onclick="toggleSettings()" class="btn btn-3d btn-close"><span
+                    class="material-symbols-outlined">close</span></button>
+
+                <h2 class="txt-center txt-h2 mb-4 color-main" style="display:block;">Settings</h2>
+                <p>Some settings may require a new session. Please refresh the browser, apply your settings, then press play.</p>
+
+                <!-- Difficulty settings -->
+                <h3 class="txt-h3 m-4">Difficulty</h3>
+                <div class="settingsSubContainer row justify-content-center align-items-center p-4">
+                    <div class="col-12 col-md-6">
+                        <label for="cbxAltGameMode">Alternative Game Mode - No Moving Planets</label>
+                        <br>
+                        <input type="checkbox" id="cbxAltGameMode" name="altGameMode">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Toggles an alternative gamemode where planets do not move. Planets will appear randomly on screen and disappear after a set time limit.</p>
+                    </div>
+                    <div class="settings-divider"></div>
+                    
+                    <div class="col-12 col-md-6">
+                        <label for="cbxHealth">Invincible</label>
+                        <br>
+                        <input type="checkbox" id="cbxHealth" name="Invincible">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Toggles whether or not the player takes damage.</p>
+                    </div>
+                    <div class="settings-divider"></div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="cbxTargetBox">Target Boxes</label>
+                        <br>
+                        <input type="checkbox" id="cbxTargetBox" name="Target Boxes">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Toggles boxes around all clickable space objects and the player to identify collisions.</p>
+                    </div>
+                    <div class="settings-divider"></div>
+
+                    <!--
+                    <div class="col-12 col-md-6">
+                        <label for="rngObjSpeed">Space Object Speed</label>
+                        <br>
+                        <input class="m-2" type="range" min="1" max="3" value="3" id="rngObjSpeed"
+                            name="Space Object Speed">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Changes how fast all animations are played. Default setting is 3 (max).</p>
+                    </div>
+                    -->
+                </div>
+
+                <!-- UI settings -->
+                <h3 class="txt-h3 m-4">User Interface</h3>
+                <div class="settingsSubContainer row justify-content-center align-items-center p-4">
+                    <!--
+                    <div class="col-12 col-md-6">
+                        <label for="clrUIBG">Background Colors</label>
+                        <input type="color" id="clrUIBG" name="User Interface Custom Color">
+                        <br>
+                        <label for="clrUIText">Text and Icon Colors</label>
+                        <input type="color" id="clrUIText" name="User Interface Custom Color">
+                        <br>
+                        <button class="btn-mini" onclick="updateUIColors()">Update Color</button>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Sets custom colors for the User Interface elements.
+                            <br>
+                            <strong>To restore default colors, and refresh the page. Don't forget to save your progress
+                                first!</strong>
+                        </p>
+                    </div>
+                    <div class="settings-divider"></div>
+                    -->
+                    
+                    <div class="col-12 col-md-6">
+                        <label for="cbxLightMode">Light Mode</label>
+                        <br>
+                        <input type="checkbox" id="cbxLightMode" name="Light Mode">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Toggles light mode for all menues.</p>
+                    </div>
+                    <div class="settings-divider"></div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="cbxDarkMode">Dark Mode</label>
+                        <br>
+                        <input type="checkbox" id="cbxDarkMode" name="Dark Mode">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Toggles dark mode for all menues.</p>
+                    </div>
+                    <div class="settings-divider"></div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="rngColorBlind">Color Blindness Modes</label>
+                        <br>
+                        <input class="m-2" type="range" min="0" max="2" value="0" id="rngColorBlind"
+                            name="Color Blindness Modes">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Sets the user interface to a colorblind mode. <br> Default: 1 <br> Deu and Tri: 2 <br> Pro: 3
+                        </p>
+                    </div>
+                    <div class="settings-divider"></div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="cbxHighContrast">High Contrast Mode</label>
+                        <br>
+                        <input type="checkbox" id="cbxHighContrast" name="User Interface High Contrast">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Sets the User Interface to be high contrast colors.</p>
+                    </div>
+                    <div class="settings-divider"></div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="cbxBlackWhite">Black and White</label>
+                        <br>
+                        <input type="checkbox" id="cbxBlackWhite" name="Black and White">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Toggles black and white mode for the entire screen.</p>
+                    </div>
+                    <div class="settings-divider"></div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="cbxCustomCursors">Disable Custom Cursors </label>
+                        <br>
+                        <input type="checkbox" id="cbxCustomCursors" name="Custom Cursors">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Toggles the custom cursor appearance. THis setting does not affect equipped cursor bonuses.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Performance settings -->
+                <h3 class="txt-h3 m-4">Performance</h3>
+                <div class="settingsSubContainer row justify-content-center align-items-center p-4">
+                    <div class="col-12 col-md-6">
+                        <label for="cbxStarAnimations">Star Animations</label>
+                        <br>
+                        <input type="checkbox" checked="true" id="cbxStarAnimations" name="Star Animations">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Toggles the falling background stars.</p>
+                    </div>
+                    <div class="settings-divider"></div>
+
+                    <!--
+                        <div class="col-12 col-md-6">
+                            <label for="cbxObjAnimations">Space Object Animations</label>
+                            <br>
+                            <input type="checkbox" id="cbxObjAnimations" name="Space Object Animations">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <p>Toggles the falling clickable space objects.</p>
+                        </div>
+                        <div class="settings-divider"></div>
+                    -->
+
+                    <div class="col-12 col-md-6">
+                        <label for="cbxShipRotation">Spaceship Rotation</label>
+                        <br>
+                        <input type="checkbox" checked="true" id="cbxShipRotation" name="Spaceship Rotation">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Toggles the player ship rotation when the mouse moves or when an object has focus.</p>
+                    </div>
+                </div>
+
+                <!-- Data settings -->
+                <h3 class="txt-h3 m-4">Data</h3>
+                <div class="settingsSubContainer row justify-content-center align-items-center p-4">
+                    <button class="btn btn-primary" style="width: 100%; max-width: 400px;" onclick="saveGame()">Save Game - Browser Session</button>
+                    <p>Saves your game to session browser storage. Once the browser window is closed, game data will be
+                        lost.</p>
+                    <button class="btn btn-warning" style="width: 100%; max-width: 400px;" onclick="deleteGame()">Delete All Game Data</button>
+                    <p>Deletes ALL game data from your browser storage. After deleting your game data, you will be
+                        returned to the homepage. <strong>Warning: This action cannot be undone.</strong></p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <!--========================== END MAIN CONTENT =================================-->
+
+    <footer class="row align-items-center justify-content-between m-0 p-2">
+        <div class="txt-reg txt-center mt-1 mb-0 color-white" style="font-size: 1rem;"><label for="lvl"
+                id="lvlLabel">Level</label><input id="lvl" type="number" value="1" max="500" readonly /></div>
+        <div class="col-12 txt-center"><progress id="exp" value="0" min="0" max="10"></progress></div>
+        
+        <div class="col-12 col-sm-6 col-lg order-2 order-lg-1"><span class="icon-coin"
+                style="width:auto; vertical-align: -10px;" aria-disabled="true" aria-label="Score">paid</span><input
+                id="score" type="number" aria-disabled="true" value="0" readonly /></div>
+        <div class="col-12 col-sm-12 col-lg order-1 order-lg-2"><progress class="mt-2 mb-1" aria-disabled="true"
+                aria-hidden="true" id="health" value="10" min="0" max="10"></progress></div>
+        <div class="col-12 col-sm-6 col-lg order-3 order-lg-3">
+            <ul class="m-0 txt-right">
+                <li>
+                    <button class="btn btn-icon-nobg popup ml-4" onclick="saveGame()" aria-label="Save Game"><span
+                            class="material-symbols-outlined" aria-hidden="true">save</span><span class="popupTxt"
+                            id="savePopUp" aria-hidden="true">Game Saved</span></button>
+                </li>
+                <li>
+                    <button class="btn btn-icon-nobg ml-4" onclick="toggleTopNav()"
+                        aria-label="Toggle Top Navigation"><span
+                            class="material-symbols-outlined">visibility</span></button>
+                </li>
+                <li>
+                    <button class="btn btn-icon-nobg ml-4" onclick="toggleSettings()" aria-label="Save Game"><span
+                            class="material-symbols-outlined" aria-hidden="true">settings</span></button>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class="default G1">
+
+<head>
+    <title>GalaClixy | The Galactic Clicker Game</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="A Galactic Clicker Game">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Galaclixy_v3/styles/bootstrapGrid-min.css">
+    <link rel="stylesheet" href="../Galaclixy_v3/styles/main-styles.css">
+    <link rel="stylesheet" href="../Galaclixy_v3/styles/Galaclixy-styles.css">
+    <link rel="stylesheet" href="../Galaclixy_v3/styles/settings-override-styles.css">
+    <script src="../Galaclixy_v3/scripts/navbar.js" defer></script>
+
+
+    <!--Google Libraries-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Orbitron:wght@400..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!--========================== NAV =================================-->
+    <nav id="nav" class="row justify-content-center justify-content-sm-between align-items-center px-0 m-0 mb-4"
+        style="position: relative;">
+        <a href="./index.html" class="txt-center txt-left-sm col-12 col-sm-6 col-md-3 my-1">
+            <h1 class="txt-h3 logo-main" style="display:block; font-size: 1.4rem;">GALACLIXY</h1>
+        </a>
+        <a href="#mainContent" class="sr-only">Skip to main content</a>
+
+        <div class="txt-center txt-right-sm col-12 col-sm-6 col-md-9 my-0">
+            <a href="./play.html" class="btn btn-primary" style="text-decoration: none;">Play</a>
+        </div>
+    </nav>
+
+    <!--========================== START MAIN CONTENT =================================-->
+    <main id="mainContent" class="row align-items-center justify-content-center" style="position: relative;">
+        <h1 class="txt-h1 color-white txt-center my-2">GalaClixy: The Galacitc Clicker Game</h1>
+        <p class="txt-h3 color-white txt-center">From Mousepad to launchpad</p>
+
+        <div class="row justify-content-center m-4">
+            <div class="col-12 col-md-4">
+                <div class="homepage-card p-4">
+                    <h2 class="txt-h3 mb-2">3 Galaxies to Explore</h2>
+                    <p class="color-black">...and more on the way!</p>
+                    <img src="../Galaclixy_v3/assets/imgs/galaxies/GalaxyPortal1.png" alt=""/>
+                    <p class="color-black">Click your way through 3 unique galaxies with digitally hand-drawn assets.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="homepage-card p-4">
+                    <h2 class="txt-h3 mb-2">Customization Options</h2>
+                    <img src="../Galaclixy_v3/assets/imgs/cursors/Cursor-AdvancedTarget-thumb.png" alt=""/>
+                    <p class="color-black">Customize your ship, cursor, and UI</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="homepage-card p-4">
+                    <h2 class="txt-h3 mb-2">Save your Progress</h2>
+                    <img src="../Galaclixy_v3/assets/imgs/ships/Ship-TravelersShip.png" alt=""/>
+                    <p class="color-black">Save your progress with no sign-up required.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="./play.html" class="btn btn-3d btn-primary homepage-play-btn" style="text-decoration: none;">Play for Free</a>
+    </main>
+    <!--========================== END MAIN CONTENT =================================-->
+
+    <footer class="row align-items-center justify-content-between m-0 mt-4 p-2" style="position: relative;">
+        <ul class="home-footer-links">
+            <li><a href="./about.html">About</a></li>
+            <span class="mx-2">|</span>
+            <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+            <span class="mx-2">|</span>
+            <li><a href="./Terms of Use.html">Terms of Use</a></li>
+        </ul>
+    </footer>
+
+    <style>
+        .logo-main {
+            width: auto;
+            max-width: none;
+        }
+
+        .home-footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .homepage-card {
+            margin: 10px;
+            color: var(--color-secondary);
+            background-color: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-radius: 15px;
+            min-height: 250px;
+            height: 95%;
+            overflow: hidden;
+        }
+        .homepage-card img{
+            width: 100%;
+            max-width: 175px;
+        }
+        .homepage-play-btn{
+            width: auto;
+            padding: 20px 60px;
+        }
+        html{
+            overflow-y: scroll;
+        }
+    </style>
+
+</body>
+
+</html>

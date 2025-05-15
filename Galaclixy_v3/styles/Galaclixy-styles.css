@@ -1,0 +1,590 @@
+/*-----Play Viewport, Player, and Score-----*/
+#playVP {
+    position: relative;
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#player {
+    z-index: 800;
+    height: 150px;
+    width: 150px;
+    transition: ease;
+}
+
+#score {
+    all: unset;
+    background-color: transparent;
+    color: var(--color-white);
+    font-size: 2rem;
+    font-weight: 300;
+    max-width: 100%;
+    width: 250px;
+    overflow: visible;
+}
+
+#lvl {
+    all: unset;
+    background-color: transparent;
+    color: var(--color-white);
+    font-size: 1rem;
+    font-weight: 300;
+    text-align: right;
+    width: 60px;
+    margin-top: 5px;
+}
+
+#health {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 20px;
+}
+
+#health::-webkit-progress-bar {
+    background-color: var(--color-black);
+    border-radius: 20px;
+    border: 2px solid var(--color-black);
+    transition: width 1.25s ease;
+}
+
+#health::-webkit-progress-value {
+    background-color: var(--color-health);
+    /*fallback*/
+    background: linear-gradient(90deg,
+            rgb(116, 9, 50) 0%,
+            rgb(205, 10, 10) 25%,
+            rgb(224, 91, 19) 50%,
+            rgb(205, 10, 10) 75%,
+            rgb(116, 9, 50) 100%);
+    border-radius: 17px;
+    transition: width 1.25s ease;
+}
+
+#exp {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+}
+
+#exp::-webkit-progress-bar {
+    background-color: var(--color-black);
+    transition: width .75s ease;
+}
+
+#exp::-webkit-progress-value {
+    background-color: var(--color-exp);
+    transition: width .75s ease;
+}
+
+#homePlanet {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 800px;
+    background-image: url("../assets/imgs/BGs/BlastOff-G1.png");
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+
+}
+/*----------Custom Cursors------------*/
+.default {
+    cursor: default 0 0, auto;
+}
+.default .obj:hover{
+    cursor: pointer;
+}
+
+.dot {
+    cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto;
+}
+
+.dot2 {
+    cursor: url('../assets/imgs/cursors/Cursor-DotLines.png') 25 25, auto;
+}
+
+.target {
+    cursor: url('../assets/imgs/cursors/Cursor-Target.png') 25 25, auto;
+}
+
+.target2 {
+    cursor: url('../assets/imgs/cursors/Cursor-AdvancedTarget.png') 25 25, auto;
+}
+
+.target3 {
+    cursor: url('../assets/imgs/cursors/Cursor-SuperiorTarget.png') 25 25, auto;
+}
+
+.arrow {
+    cursor: url('../assets/imgs/cursors/Cursor-Arrow.png') 25 25, auto;
+}
+
+.cross {
+    cursor: url('../assets/imgs/cursors/Cursor-Cross.png') 25 25, auto;
+}
+
+.flower {
+    cursor: url('../assets/imgs/cursors/Cursor-Flower.png') 25 25, auto;
+}
+
+.skull {
+    cursor: url('../assets/imgs/cursors/Cursor-Skull.png') 25 25, auto;
+}
+
+.smile {
+    cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto;
+}
+
+.star {
+    cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto;
+}
+
+.money {
+    cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto;
+}
+
+.boom {
+    cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto;
+}
+
+.aster {
+    cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto;
+}
+
+.rocket {
+    cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto;
+}
+
+.blackhole {
+    cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto;
+}
+
+.gal {
+    cursor: url('../assets/imgs/cursors/Cursor-Dot.png') 25 25, auto;
+}
+
+.dot .obj:hover,
+.dot2 .obj:hover,
+.target .obj:hover,
+.target2 .obj:hover,
+.target3 .obj:hover,
+.arrow .obj:hover,
+.cross .obj:hover,
+.flower .obj:hover,
+.skull .obj:hover,
+.smile .obj:hover,
+.star .obj:hover,
+.money .obj:hover,
+.boom .obj:hover,
+.aster .obj:hover,
+.rocket .obj:hover,
+.blackhole .obj:hover,
+.gal .obj:hover{
+    cursor: inherit;
+}
+
+/*-----------------------------*/
+
+/*----------Tool Tips------------*/
+/* Tooltip container */
+.clicker-box {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.clicker-box .clicker-num {
+    visibility: hidden;
+    width: auto;
+
+    margin: 0;
+    padding: 0;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+
+    display: inline;
+    left: 0;
+    z-index: 1;
+
+    font-family: var(--type-main-family);
+    font-size: 3rem;
+    color: var(--color-black);
+    border-radius: 10px;
+
+    text-align: center;
+    padding: 10px 0;
+}
+
+.clicker-box:hover .clicker-num {
+    visibility: visible;
+}
+
+/*---------------------------------*/
+
+/*--------Cursor Default--------*/
+
+/*-----------------------------*/
+
+
+/*-----Visuals and Animations------*/
+.icon-coin {
+    width: 40px;
+    height: 40px;
+    content: url("../assets/imgs/UI/Icon-Coin.png");
+}
+.item-card .icon-coin {
+    vertical-align: -12px;
+    vertical-align: -6px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+#objsBG {
+    position: absolute;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.starFar,
+.starClose {
+    position: absolute;
+    font-family: "Material Symbols Outlined";
+    font-variation-settings:
+        'FILL' 1;
+
+    top: 0;
+    color: var(--color-white);
+}
+
+.starFar {
+    font-size: 10px;
+    animation: animateStars 30s linear infinite;
+}
+
+.starClose {
+    font-size: 20px;
+    animation: animateStars 20s linear infinite;
+}
+
+.starFar::before,
+.starClose::before {
+    content: "\f526";
+    text-shadow: 0 0 5px var(--color-white),
+        0 0 20px var(--color-white),
+        0 0 50px var(--color-white);
+}
+
+.obj {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    cursor: default;
+    position: absolute;
+    background-size: contain;
+    top: -200px;
+    z-index: 500;
+}
+
+.obj:hover {
+    cursor: pointer;
+}
+
+.asteroid:not(.altGM) {
+    /*defaults*/
+    animation: animateObjs 20s linear infinite;
+    background-image: url("../assets/imgs/objects/Obj-Asteroid-G1.png");
+    height: 100px;
+    width: 100px;
+}
+.asteroid.altGM{
+    /*defaults*/
+    background-image: url("../assets/imgs/objects/Obj-Asteroid-G1.png");
+    height: 100px;
+    width: 100px;
+}
+
+.sm-planet:not(.altGM) {
+    /*defaults*/
+    animation: animateObjs 30s linear infinite;
+    background-image: url("../assets/imgs/objects/Obj-SmPlanet-G1.png");
+    height: 140px;
+    width: 140px;
+}
+.sm-planet.altGM {
+    /*defaults*/
+    background-image: url("../assets/imgs/objects/Obj-SmPlanet-G1.png");
+    height: 140px;
+    width: 140px;
+}
+
+.md-planet:not(.altGM) {
+    /*defaults*/
+    animation: animateObjs 40s linear infinite;
+    background-image: url("../assets/imgs/objects/Obj-MdPlanet-G1.png");
+    height: 165px;
+    width: 165px;
+}
+.md-planet.altGM {
+    /*defaults*/
+    background-image: url("../assets/imgs/objects/Obj-MdPlanet-G1.png");
+    height: 165px;
+    width: 165px;
+}
+
+.lg-planet:not(.altGM) {
+    /*defaults*/
+    animation: animateObjs 50s linear infinite;
+    background-image: url("../assets/imgs/objects/Obj-LgPlanet-G1.png");
+    height: 220px;
+    width: 220px;
+}
+.lg-planet.altGM {
+    /*defaults*/
+    background-image: url("../assets/imgs/objects/Obj-LgPlanet-G1.png");
+    height: 220px;
+    width: 220px;
+}
+
+.asteroid:hover,
+.sm-planet:hover,
+.md-planet:hover {
+    filter: brightness(70%);
+}
+
+.animateHomePlanet {
+    transition: 40s;
+    transform: translateY(100dvh);
+
+}
+
+#TravelBox {
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: var(--color-black);
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    height: 150dvw;
+    width: 150dvw;
+    z-index: 700;
+}
+
+#TravelBox.flash-popup {
+    animation: animateTravel 4s;
+}
+
+@keyframes animateStars {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(100dvh) rotate(360deg);
+    }
+}
+
+@keyframes animateObjs {
+    0% {
+        transform: translateY(0) rotate(-30deg);
+    }
+
+    100% {
+        transform: translateY(calc(150dvh)) rotate(30deg);
+    }
+}
+
+@keyframes animateTravel {
+    0% {
+        visibility: visible;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+/*-------------------------------*/
+
+
+/*---------- Galaxy Level Asset Packs -----------*/
+
+/*  Galaxy Level 1*/
+.G1 body {
+    background-image: url("../assets/imgs/BGs/BG-G1.jpg");
+}
+
+.G1 .asteroid {
+    background-image: url("../assets/imgs/objects/Obj-Asteroid-G1.png");
+}
+
+.G1 .sm-planet {
+    background-image: url("../assets/imgs/objects/Obj-SmPlanet-G1.png");
+}
+
+.G1 .md-planet {
+    background-image: url("../assets/imgs/objects/Obj-MdPlanet-G1.png");
+}
+
+.G1 .lg-planet {
+    background-image: url("../assets/imgs/objects/Obj-LgPlanet-G1.png");
+}
+
+/*  Galaxy Level 2*/
+.G2 body {
+    background-image: url("../assets/imgs/BGs/BG-G2.jpg");
+}
+
+.G2 .asteroid {
+    background-image: url("../assets/imgs/objects/Obj-Asteroid-G1.png");
+}
+
+.G2 .sm-planet {
+    background-image: url("../assets/imgs/objects/Obj-SmPlanet-G2.png");
+}
+
+.G2 .md-planet {
+    background-image: url("../assets/imgs/objects/Obj-MdPlanet-G2.png");
+}
+
+.G2 .lg-planet {
+    background-image: url("../assets/imgs/objects/Obj-LgPlanet-G2.png");
+}
+
+/*  Galaxy Level 3*/
+.G3 body {
+    background-image: url("../assets/imgs/BGs/BG-G3.jpg");
+}
+
+.G3 .asteroid {
+    background-image: url("../assets/imgs/objects/Obj-Asteroid-G1.png");
+}
+
+.G3 .sm-planet {
+    background-image: url("../assets/imgs/objects/Obj-SmPlanet-G3.png");
+}
+
+.G3 .md-planet {
+    background-image: url("../assets/imgs/objects/Obj-MdPlanet-G3.png");
+}
+
+.G3 .lg-planet {
+    background-image: url("../assets/imgs/objects/Obj-LgPlanet-G3.png");
+}
+
+/*  Galaxy Level 4*/
+.G4 body {
+    background-image: url("../assets/imgs/BGs/BG-G4.jpg");
+}
+
+.G4 .asteroid {
+    background-image: url("../assets/imgs/objects/Obj-Asteroid-G1.png");
+}
+
+.G4 .sm-planet {
+    background-image: url("../assets/imgs/objects/Obj-SmPlanet-G3.png");
+}
+
+.G4 .md-planet {
+    background-image: url("../assets/imgs/objects/Obj-MdPlanet-G3.png");
+}
+
+.G4 .lg-planet {
+    background-image: url("../assets/imgs/objects/Obj-LgPlanet-G3.png");
+}
+
+/*  Galaxy Level 5*/
+.G5 body {
+    background-image: url("../assets/imgs/BGs/BG-G5.jpg");
+}
+
+.G5 .asteroid {
+    background-image: url("../assets/imgs/objects/Obj-Asteroid-G1.png");
+}
+
+.G5 .sm-planet {
+    background-image: url("../assets/imgs/objects/Obj-SmPlanet-G3.png");
+}
+
+.G5 .md-planet {
+    background-image: url("../assets/imgs/objects/Obj-MdPlanet-G3.png");
+}
+
+.G5 .lg-planet {
+    background-image: url("../assets/imgs/objects/Obj-LgPlanet-G3.png");
+}
+
+/*  Galaxy Level 6*/
+.G6 body {
+    background-image: url("../assets/imgs/BGs/BG-G6.jpg");
+}
+
+.G6 .asteroid {
+    background-image: url("../assets/imgs/objects/Obj-Asteroid-G1.png");
+}
+
+.G6 .sm-planet {
+    background-image: url("../assets/imgs/objects/Obj-SmPlanet-G3.png");
+}
+
+.G6 .md-planet {
+    background-image: url("../assets/imgs/objects/Obj-MdPlanet-G3.png");
+}
+
+.G6 .lg-planet {
+    background-image: url("../assets/imgs/objects/Obj-LgPlanet-G3.png");
+}
+
+/*  Galaxy Level 7*/
+.G7 body {
+    background-image: url("../assets/imgs/BGs/BG-G7.jpg");
+}
+
+.G7 .asteroid {
+    background-image: url("../assets/imgs/objects/Obj-Asteroid-G1.png");
+}
+
+.G7 .sm-planet {
+    background-image: url("../assets/imgs/objects/Obj-SmPlanet-G3.png");
+}
+
+.G7 .md-planet {
+    background-image: url("../assets/imgs/objects/Obj-MdPlanet-G3.png");
+}
+
+.G7 .lg-planet {
+    background-image: url("../assets/imgs/objects/Obj-LgPlanet-G3.png");
+}
+/*-----------------------------------------------*/
